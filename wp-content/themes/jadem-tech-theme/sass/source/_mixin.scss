@@ -1,0 +1,34 @@
+// flexbox
+@mixin flex() {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+// slect
+@mixin appearance ($canet) {
+    appearance: $canet;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+// transform 
+@mixin transformer ($scale) {
+    transform: $scale;
+    -webkit-transform: $scale;
+    -moz-transform: $scale;
+    -ms-transform: $scale;
+    -o-transform: $scale;
+}
+
+@mixin transit ($attr, $sec) {
+    transition: $attr, $sec;
+    -webkit-transition: $attr, $sec;
+    -moz-transition: $attr, $sec;
+    -ms-transition: $attr, $sec;
+    -o-transition: $attr, $sec;
+}
+@mixin col ($width) {
+    width: $width;
+    padding: 0 15px;
+    margin: 15px 0;
+    box-sizing: border-box;
+}

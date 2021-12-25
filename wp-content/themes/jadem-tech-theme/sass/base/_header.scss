@@ -1,0 +1,159 @@
+.header-top {
+    height: 50px;
+    font-size: 11px;
+    color: $header-top-text-color;
+    background-color: $header-top-background;
+    justify-content: center;
+    line-height: 50px;
+    &-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        .header-top-social {
+            font-size: 16px;
+            a {
+                 color: $header-top-text-color;
+                 i {
+                    padding: 10px 0px 10px 10px;
+                    @include transit( all, 0.2s);
+                 }
+                 &:hover {
+                     color: $main-color;
+                     i {
+                        @include transformer(scale(1.2));
+                     }
+                 }
+            }
+        }
+    }
+}
+.header-bot {
+    background-color: $white-color;
+    z-index: 10;
+    height: 100px;
+    box-sizing: border-box;
+    &-inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+        .header-bot-logo {
+            .img-logo {
+                display: block;
+                height: 100px;
+            }
+        }
+        .nav-bar {
+            .main-menu {
+                display: flex;
+                align-items: center;
+                .menu-item {
+                    font-size: 18px;
+                    font-weight: 700;
+                    color: $text-color;
+                    &:hover {
+                          .menu-child {
+                              opacity: 1;
+                              visibility: visible;
+                          }  
+                    }
+                    .menu-child {
+                        opacity: 0;
+                        visibility: hidden;
+                        padding: 0 15px 15px 15px;
+                        background-color: $white-color;
+                        z-index: 10;
+                        position: absolute;
+                        top: 100%;
+                        left: 0;
+                        width: 100%;
+                        display: flex;
+                        justify-content: space-between;
+                        @include transit( all, 0.5s ease-in-out);
+                        box-sizing: border-box;
+                        &-items {
+                            width: 50%;
+                            ul {
+                                display: flex;
+                                flex-wrap: wrap;
+                                li {
+                                    width: 50%;
+                                    margin-bottom: 8px;
+                                    @include transit(all, 0.5s);
+                                    &:hover {
+                                        @include transformer(translateX(15px));
+                                        a {
+                                        color: $main-color;
+                                        }
+                                    }
+                                    .menu-child-items-a {
+                                        font-weight: 600;
+                                        color: $text-color;
+                                        font-size: 16px;
+                                    }
+                                    i {
+                                        margin-right: 10px;
+                                        font-size: 14px;
+                                    }
+                                }
+                            }
+                        }    
+                        .menu-child-img {
+                            width: 50%;
+                            img {
+                                display: block;
+                                width: 100%;
+                                box-sizing: border-box;
+                            }
+
+                        }
+                    }
+                    .menu-item-a {
+                        padding: 34px 15px;
+                        display: block;
+                        color: $text-color;
+                        @include transit( all, 0.1s);
+                        position: relative;
+                        &::after {
+                            position: absolute;
+                            content: '';
+                            top: 100%;
+                            left: 0;
+                            height: 4px;
+                            width: 0;
+                            background-color: $main-color;
+                            @include transit(all, 0.5s);
+                        }
+                        &:hover {
+                            color: $main-color;
+                            &::after {
+                                width: 100%;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .header-bot-search {
+            font-size: 18px;
+            padding: 10px 12px;
+            border: 2px solid $main-color;
+            border-radius: 50%;
+            color: $main-color;
+            @include transit( all, 0.2s);
+            &:hover {
+                color: $white-color;
+                background-color: $main-color;
+                cursor: pointer;
+                border: 2px solid $main-color;
+                border-radius: 50%;
+            }
+        }
+    }
+}
+.fixed {
+    position: fixed;
+    top:0; 
+    left:0;
+    width: 100%; 
+}

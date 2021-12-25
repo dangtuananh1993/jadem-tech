@@ -1,0 +1,88 @@
+.footer {
+    &-top {
+        padding: 60px 0;
+        background-color: $header-top-background;
+        &-logo-name {
+            height: 100px;
+            display: flex;
+            align-items: center;
+            .logo {
+                width: 35%;
+                .img-logo {
+                    display: block;
+                    height: 100px;
+                }
+            }
+            .company-name {
+                a {
+                    font-size: 25px;
+                    font-weight: 700;
+                    &:hover {
+                        color: $main-color;
+                    }
+                }
+            }
+        }
+        &-inner {
+            .col {
+                .title {
+                    font-weight: 700;
+                    font-size: 16px;
+                    margin-bottom: 15px;
+                }
+            }
+            .col-1 {
+                @include col(35%);
+                ul {
+                    li {
+                        display: flex;
+                        align-items: baseline;
+                        margin-bottom: 10px;
+                        &:hover {
+                            i {
+                                color: $main-color;
+                            }
+                        }
+                        i {
+                            margin-right: 15px;
+                        }
+                    }
+                }
+            }
+            .col-2 {
+                @include col(25%);
+                ul {
+                    li {
+                        align-items: baseline;
+                        margin-bottom: 10px;
+                        &:hover {
+                            cursor: pointer;
+                            a {
+                                color: $main-color;
+                            }
+                        }
+                    }
+                }
+            }
+            .col-3 {
+                @include col(40%);
+            }
+    
+        }
+    }
+    
+    &-bot {
+        background-color: $category-background-color;
+        height: 50px;
+        box-sizing: border-box;
+        line-height: 50px;
+        text-align: center;
+        span {
+            color: $main-color;
+            font-weight: 700;
+            a {
+                color: $main-color;
+            }
+        }
+    }
+}
