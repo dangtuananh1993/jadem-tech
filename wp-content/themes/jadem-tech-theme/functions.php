@@ -140,14 +140,39 @@ add_action( 'widgets_init', 'jadem_tech_widgets_init' );
  * Enqueue scripts and styles.
  */
 function jadem_tech_scripts() {
-	wp_enqueue_style( 'jadem-tech-style', get_stylesheet_uri(), array(), _S_VERSION );
-	wp_style_add_data( 'jadem-tech-style', 'rtl', 'replace' );
+	// wp_enqueue_style( 'jadem-tech-style', get_stylesheet_uri(), array(), _S_VERSION );
+	// wp_style_add_data( 'jadem-tech-style', 'rtl', 'replace' );
 
-	wp_enqueue_script( 'jadem-tech-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
+	// wp_enqueue_script( 'jadem-tech-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
 
-	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
-		wp_enqueue_script( 'comment-reply' );
-	}
+	// if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
+	// 	wp_enqueue_script( 'comment-reply' );
+	// }
+
+	// Enqueue CSS
+	wp_register_style('jadem-tech-font-awesome', get_template_directory_uri() . '/css/fontawesome.min.css', array(), _S_VERSION);
+	wp_enqueue_style('jadem-tech-font-awesome');
+
+	wp_register_style('jadem-tech-slick-css', get_template_directory_uri() . '/css/slick.css', array(), _S_VERSION);
+	wp_enqueue_style('jadem-tech-slick-css');
+
+	wp_register_style('jadem-tech-slick-theme-css', get_template_directory_uri() . '/css/slick-theme.css', array(), _S_VERSION);
+	wp_enqueue_style('jadem-tech-slick-theme-css');
+	
+	wp_register_style('jadem-tech-css', get_template_directory_uri() . '/css/style.css', array(), _S_VERSION);
+	wp_enqueue_style('jadem-tech-css');
+
+	// Enqueue Script
+	wp_register_script('jquery-3.6', get_template_directory_uri() . '/js/jquery-3.6.0.min.js', array(), false, true);
+	wp_enqueue_script('jquery-3.6');
+
+	wp_register_script('jadem-tech-js', get_template_directory_uri() . '/js/script.js', ['jquery-3.6'], false, true);
+	wp_enqueue_script('jadem-tech-js');
+
+	wp_register_script('jadem-tech-slick', get_template_directory_uri() . '/js/slick.min.js', ['jquery-3.6'], false, true);
+	wp_enqueue_script('jadem-tech-slick');
+
+
 }
 add_action( 'wp_enqueue_scripts', 'jadem_tech_scripts' );
 
@@ -301,3 +326,29 @@ function create_tag_taxonomy() {
 // Hook into the 'init' action
 add_action( 'init', 'create_tag_taxonomy', 1 );
 
+/**
+ * Add Advanced Custom Field
+ */
+if( function_exists('acf_add_options_page') ) {
+	
+	acf_add_options_page(array(
+		'page_title' 	=> 'Theme Settings',
+		'menu_title'	=> 'Theme Settings',
+		'menu_slug' 	=> 'theme-general-settings',
+		'capability'	=> 'edit_posts',
+		'redirect'		=> true,
+	));
+	
+	acf_add_options_sub_page(array(
+		'page_title' 	=> 'Theme Footer Settings',
+		'menu_title'	=> 'Footer',
+		'parent_slug'	=> 'theme-general-settings',
+	));
+	
+	acf_add_options_sub_page(array(
+		'page_title' 	=> 'Theme Header Settings',
+		'menu_title'	=> 'Header',
+		'parent_slug'	=> 'theme-general-settings',
+	));
+	
+}

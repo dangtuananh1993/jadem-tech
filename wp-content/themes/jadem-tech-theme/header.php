@@ -17,17 +17,6 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="profile" href="https://gmpg.org/xfn/11">
 
-	<!-- Link CSS -->
-    <link rel="stylesheet" href="<?php echo get_template_directory_uri()?>/css/fontawesome.min.css">
-    <link rel="stylesheet" href="<?php echo get_template_directory_uri()?>/css/slick.css">
-    <link rel="stylesheet" href="<?php echo get_template_directory_uri()?>/css/slick-theme.css">
-    <link rel="stylesheet" href="<?php echo get_template_directory_uri()?>/css/style.css">
-
-    <!--Lick script  -->
-    <script src="<?php echo get_template_directory_uri()?>/js/jquery-3.6.0.min.js"></script>
-    <script src="<?php echo get_template_directory_uri()?>/js/slick.min.js"></script>
-    <script src="<?php echo get_template_directory_uri()?>/js/script.js"></script>
-
 	<?php wp_head(); ?>
 </head>
 
@@ -49,7 +38,6 @@
 								<a href="<?php echo get_template_directory_uri()?>/#"><i class="fab fa-facebook-square"></i></a>
 								<a href="#"><i class="fab fa-youtube"></i></a>
 								<a href="#"><i class="fab fa-linkedin-in"></i></a>
-								<!-- <a href="#"><i class="fab fa-facebook-square"></i></a> -->
 							</div>
 						</div>
 					</div>

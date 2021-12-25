@@ -20,7 +20,7 @@
 					<div class="container">
 						<div class="footer-top-logo-name">
 							<div class="logo">
-								<img class="img-logo" src="/img/logo.png" alt="">
+								<img class="img-logo" src="<?php echo get_template_directory_uri()?>/img/logo.png" alt="">
 							</div>
 							<div class="company-name">
 								<a href=""><p>CÔNG TY TNHH JADE M-TECH</p></a>
