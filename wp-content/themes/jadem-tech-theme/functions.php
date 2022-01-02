@@ -100,6 +100,7 @@ if ( ! function_exists( 'jadem_tech_setup' ) ) :
 				'flex-height' => true,
 			)
 		);
+		
 	}
 endif;
 add_action( 'after_setup_theme', 'jadem_tech_setup' );
@@ -290,6 +291,41 @@ function create_category_taxonomy() {
 
 // Hook into the 'init' action
 add_action( 'init', 'create_category_taxonomy', 0 );
+
+// ==========================Create Brand Product Taxonomy =============================
+function create_brand_taxonomy() {
+	/* Biến $label chứa các tham số thiết lập tên hiển thị của Taxonomy
+	 */
+	$labels = array(
+		'name' => 'Product Brand',
+		'singular' => 'Product Brand',
+		'menu_name' => 'Brand'
+	);
+
+
+	/* Biến $args khai báo các tham số trong custom taxonomy cần tạo
+	 */
+	$args = array(
+		'labels'                     => $labels,
+		'hierarchical'               => true,
+		'public'                     => true,
+		'show_ui'                    => true,
+		'show_admin_column'          => true,
+		'show_in_nav_menus'          => true,
+		'show_tagcloud'              => true,
+	);
+
+
+	/* Hàm register_taxonomy để khởi tạo taxonomy
+	 */
+	register_taxonomy('product_brand', 'product', $args);
+
+
+}
+
+
+// Hook into the 'init' action
+add_action( 'init', 'create_brand_taxonomy', 0 );
 
 // ==========================Create Tag Product Taxonomy =============================
 function create_tag_taxonomy() {

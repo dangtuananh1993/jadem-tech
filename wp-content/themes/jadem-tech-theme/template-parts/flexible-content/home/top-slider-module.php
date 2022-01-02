@@ -1,48 +1,29 @@
 <!-- Banner -->
 <div class="banner">
-                <!-- Slider 1 -->
-                <div class="banner-inner" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5)), url('<?php echo get_template_directory_uri()?>./img/slider-1.jpg');">
-                    <!-- <img src="img/slider-1.jpg" alt=""> -->
-                    <div class="banner-content container">
-                        <div class="banner-content-inner">
-                            <div class="banner-title">Lorem ipsum dolor sit amet consectetur.</div>
-                            <div class="banner-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum voluptate dolorum reiciendis animi, laudantium accusantium id, amet tempora facere obcaecati cumque similique quae mollitia corrupti ipsum suscipit esse quis recusandae.</div>
-                        </div>
+
+    <?php $top_slider = get_sub_field('top_slider'); 
+    if( !empty( $top_slider ) ) {
+        foreach( $top_slider as $item ) {
+            $slider_image_url = wp_get_attachment_url( $item['top_slider_image'], 'thumbnail' ); 
+        ?>    
+            <!-- Slider 1 -->
+            <div class="banner-inner" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5)), url('<?php echo $slider_image_url;?>');">
+                <!-- <img src="img/slider-1.jpg" alt=""> -->
+                <div class="banner-content container">
+                    <div class="banner-content-inner">
+                        <div class="banner-title"><?php echo $item['top_slider_title']; ?></div>
+                        <div class="banner-description"><?php echo $item['top_slider_content']; ?></div>
                     </div>
                 </div>
-                <!-- End Slider 1 -->
-                <!-- Slider 2 -->
-                <div class="banner-inner" style="background-image:linear-gradient(rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5)), url('<?php echo get_template_directory_uri()?>./img/slider-4.jpg');">
-                    <!-- <img src="img/slider-1.jpg" alt=""> -->
-                    <div class="banner-content container">
-                        <div class="banner-content-inner">
-                            <div class="banner-title">Lorem ipsum dolor sit amet consectetur.</div>
-                            <div class="banner-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum voluptate dolorum reiciendis animi, laudantium accusantium id, amet tempora facere obcaecati cumque similique quae mollitia corrupti ipsum suscipit esse quis recusandae.</div>
-                        </div>
-                    </div>
-                </div>
-                <!-- End Slider 2 -->
-                <!-- Slider 3 -->
-                <div class="banner-inner" style="background-image:linear-gradient(rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5)), url('<?php echo get_template_directory_uri()?>./img/slider-1.jpg');">
-                    <!-- <img src="img/slider-1.jpg" alt=""> -->
-                    <div class="banner-content container">
-                        <div class="banner-content-inner">
-                            <div class="banner-title">Lorem ipsum dolor sit amet consectetur.</div>
-                            <div class="banner-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum voluptate dolorum reiciendis animi, laudantium accusantium id, amet tempora facere obcaecati cumque similique quae mollitia corrupti ipsum suscipit esse quis recusandae.</div>
-                        </div>
-                    </div>
-                </div>
-                <!-- End Slider 3 -->
-                <!-- Slider 4 -->
-                <div class="banner-inner" style="background-image:linear-gradient(rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5)), url('<?php echo get_template_directory_uri()?>./img/slider-2.jpg');">
-                    <!-- <img src="img/slider-1.jpg" alt=""> -->
-                    <div class="banner-content container">
-                        <div class="banner-content-inner">
-                            <div class="banner-title">Lorem ipsum dolor sit amet consectetur.</div>
-                            <div class="banner-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum voluptate dolorum reiciendis animi, laudantium accusantium id, amet tempora facere obcaecati cumque similique quae mollitia corrupti ipsum suscipit esse quis recusandae.</div>
-                        </div>
-                    </div>
-                </div>
-                <!-- End Slider 4 -->
             </div>
-            <!-- End Banner -->
+            <!-- End Slider 1 -->
+        <?php }
+    }
+    ?>
+
+
+
+    
+    
+</div>
+<!-- End Banner -->

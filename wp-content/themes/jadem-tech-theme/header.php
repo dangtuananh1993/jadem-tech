@@ -54,12 +54,16 @@
 							$location = get_nav_menu_locations();
 							$menu_id = $location['main-menu'];
 							$main_menu = wp_get_nav_menu_items($menu_id);
-							// print_r($main_menu);
 							?>
 							<div class="nav-bar">
 								<ul class="main-menu">
 									
 									<?php foreach($main_menu as $menu_item):?>
+										<?php echo "<pre>" ;
+										// print_r($menu_item);
+										 echo "</pre>" ;
+										
+										?>
 										<?php if( !$menu_item->menu_item_parent ) {
 											$child_menu = [];
 											foreach( $main_menu as $menu ) {
@@ -70,30 +74,26 @@
 													// echo $i . "<br>";
 												}
 											}
-											// echo "<pre>";
-											// print_r($child_menu);
-											// echo "</pre>";
-											// wp_die();
 
 											$has_child = !empty($child_menu) && is_array($child_menu);
 											if( !$has_child) { ?>
-												<li class="menu-item"><a class="menu-item-a" href="<?php echo home_url(); ?>"><?php echo $menu_item->title; ?></a></li>
+												<li class="menu-item"><a class="menu-item-a" href="<?php echo $menu_item->url; ?>"><?php echo $menu_item->title; ?></a></li>
 											<?php } else { ?>
 												<li class="menu-item">
-													<a class="menu-item-a" href="<?php echo home_url(); ?>"><?php echo $menu_item->title; ?></a>
+													<a class="menu-item-a" href="<?php echo $menu_item->url; ?>"><?php echo $menu_item->title; ?></a>
 													<div class="menu-child">
-													<div class="menu-child-items">
-														<h3>DANH MỤC SẢN PHẨM </h3>
-														<ul>
-															<?php foreach($child_menu as $child_mn) : ?>
-															<li><a class="menu-child-items-a" href="<?php echo $child_mn->url; ?>"><i class="fas fa-chevron-right"></i> <?php echo $child_mn->title;?></a></li>
-															<?php endforeach ?>
-														</ul>
+														<div class="menu-child-items">
+															<h3>DANH MỤC SẢN PHẨM </h3>
+															<ul>
+																<?php foreach($child_menu as $child_mn) : ?>
+																<li><a class="menu-child-items-a" href="<?php echo $child_mn->url; ?>"><i class="fas fa-chevron-right"></i> <?php echo $child_mn->title;?></a></li>
+																<?php endforeach ?>
+															</ul>
+														</div>
+														<div class="menu-child-img">
+															<img src="<?php echo get_template_directory_uri()?>./img/product/product-category.jpg" alt="">
+														</div>
 													</div>
-													<div class="menu-child-img">
-														<img src="<?php echo get_template_directory_uri()?>./img/product/product-category.jpg" alt="">
-													</div>
-												</div>
 												</li>
 											<?php }
 										} ?>

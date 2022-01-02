@@ -1,0 +1,142 @@
+.banner-taxonomy {
+    min-height: 350px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    h1 {
+        text-align: center;
+        padding-top: 150px;
+        font-size: 50px;
+        font-weight: 700;
+        color: $white-color;
+        text-transform: uppercase;
+    }
+}
+.bread-crumb {
+    li {
+        a {
+            display: inline-block;
+        }
+        p {
+            display: inline-block;
+        }
+    }
+}
+.category-product {
+    .row-outer {
+        margin-bottom: 90px;
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 15px;
+            span {
+                display: block;
+                padding: 14px;
+            }
+            a {
+                display: block;
+                padding:  14px ;
+                font-size: 14px;
+                line-height: 14px;
+                border: 1px solid $header-top-text-color;
+                box-sizing: border-box;
+                margin: 0 5px;
+                color: $header-top-text-color;
+            }
+            .current {
+                background-color: $main-color;
+                color: $white-color;
+                margin: 0 5px;
+                box-sizing: border-box;
+                padding:  14px ;
+                font-size: 14px;
+                line-height: 14px;
+            }
+        }
+    }
+    .active {
+        display: block;
+    }
+    .category-tab {
+        // display: flex;
+        margin-top: 50px;
+        margin-bottom: 30px;
+        .tab-name {
+            border-bottom: 3px solid $main-color;
+            .tab-content {
+                padding: 15px ;
+                display: inline-block;
+                text-transform: uppercase;
+                font-size: 20px;
+                color: $category-text-color;
+                font-weight: 700;
+                position: relative;
+                @include transit(all, 1s);
+                &:hover {
+                    cursor: pointer;
+                    color: $white-color;
+                    background-color: $main-color;
+                    &::after {
+                        width: 100%;
+                    }
+                }
+            }
+            .tab-content-active {
+                color: $white-color;
+                background-color: $main-color;
+                &::after {
+                    width: 100%;
+                }
+            }
+            
+        }
+    }
+    .row {
+        .category-product-col {
+            @include col(33.33%);
+        }
+        .cp-background {
+            background-color: $category-background-color;
+            border: 1px solid $header-top-background;
+            padding: 50px 0 30px 0;
+            @include transit (all, 0.5s);
+            &:hover {
+                img {
+                    @include transformer(scale(1.1));
+                }
+                box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            }
+            img {
+                @include transit (all, 0.5s);
+            }
+        }
+        .cp-item {
+            .cp-img-frame-outer {
+                padding: 0 50px;
+                .cp-img-frame {
+                    position: relative;
+                    height: 0;
+                    padding-top: 100%;
+    
+                    &-inner {
+                        width: 100%;
+                        height: 100%;
+                        position: absolute;
+                        top: 0px;
+                        left: 0px;
+                        object-fit: cover
+                    }
+                }
+            }
+            h3 {
+                padding: 20px 20px;
+                text-align: center;
+                text-transform: uppercase;
+                font-size: 18px;
+                line-height: 25px;
+                color: $category-text-color;
+                font-weight: 700;
+            }
+        }
+    }
+    
+}

@@ -18,9 +18,9 @@ $(document).ready(function(){
 // Single Product slider
 $(document).ready(function(){
     $('.single-product-slider').slick({
-        dots: true,
+        // dots: true,
         arrows: true,
-        asNavFor: '.single-product-slider-bot'
+        // asNavFor: '.single-product-slider-bot'
     })
 })
 $(document).ready(function(){
@@ -31,7 +31,7 @@ $(document).ready(function(){
         // dots: true,
         // centerMode: true,
         focusOnSelect: true,
-        asNavFor: '.single-product-slider',
+        // asNavFor: '.single-product-slider',
       });
 })
 
@@ -45,15 +45,16 @@ $(document).ready(function(){
 })
 // Tab Category Product
 $(document).ready(function(){
-    $('.tab-content').click(function(e) {
-        $(this).addClass('tab-content-active')
-        $(this).siblings().removeClass('tab-content-active')
-        console.log('hello')
-        var idp = $(this).data('tab')
-        console.log(idp)
-        $(idp).addClass('active')
-        $(idp).siblings().removeClass('active')
-    })
+    // $('.tab-content').click(function(e) {
+    //     $(this).addClass('tab-content-active')
+    //     $(this).siblings().removeClass('tab-content-active')
+    //     // console.log('hello')
+    //     var idp = $(this).data('tab')
+    //     // console.log(idp)
+    //     $(idp).addClass('active')
+    //     $(idp).siblings().removeClass('active')
+    // })
+    
 })
 // Sticky Header $(window).scroll(function(){
 $(document).ready(function(){

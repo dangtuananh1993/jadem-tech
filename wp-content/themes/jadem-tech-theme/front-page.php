@@ -25,7 +25,7 @@ get_header();
             
             // Case: Product Category Grid
             elseif( get_row_layout() == 'category_grid_module' ): 
-                get_template_part('template-parts/flexible-content/home/category-top-module');
+                get_template_part('template-parts/flexible-content/home/category-grid-module');
 
             // Case: About Us
             elseif( get_row_layout() == 'home_about_us_module' ): 
