@@ -60,7 +60,7 @@ get_header();
 				<?php
 				$paged = ( get_query_var( 'paged' ) ) ? absint( get_query_var( 'paged' ) ) : 1;
 				$args = array (
-					'posts_per_page' => 2,
+					// 'posts_per_page' => 2,
 					'category_name' => $current_term->slug,
 					'paged' => $paged,
 				);

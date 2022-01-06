@@ -35,7 +35,7 @@
 						<div class="header-top-inner">
 							<p>Well come to Jadem-tech</p>
 							<div class="header-top-social">
-								<a href="<?php echo get_template_directory_uri()?>/#"><i class="fab fa-facebook-square"></i></a>
+								<a href="#"><i class="fab fa-facebook-square"></i></a>
 								<a href="#"><i class="fab fa-youtube"></i></a>
 								<a href="#"><i class="fab fa-linkedin-in"></i></a>
 							</div>
@@ -48,7 +48,12 @@
 					<div class="container">
 						<div class="header-bot-inner">
 							<div class="header-bot-logo">
-								<img src="<?php echo get_template_directory_uri()?>./img/logo.png" alt="" class="img-logo">
+								<?php 
+								if( !isset( $logo ) ) {
+									$logo = get_field( 'logo', "options" );
+								}
+								?>
+								<img src="<?php echo $logo ?>" alt="" class="img-logo">
 							</div>
 							<?php 
 							$location = get_nav_menu_locations();
@@ -60,18 +65,14 @@
 									
 									<?php foreach($main_menu as $menu_item):?>
 										<?php echo "<pre>" ;
-										// print_r($menu_item);
 										 echo "</pre>" ;
 										
 										?>
 										<?php if( !$menu_item->menu_item_parent ) {
 											$child_menu = [];
 											foreach( $main_menu as $menu ) {
-												// $i++;
 												if( $menu->menu_item_parent == $menu_item->ID ) {
-												
 													$child_menu[] = $menu;
-													// echo $i . "<br>";
 												}
 											}
 
@@ -84,14 +85,26 @@
 													<div class="menu-child">
 														<div class="menu-child-items">
 															<h3>DANH MỤC SẢN PHẨM </h3>
+															<?php
+															$lg = get_field( 'logo' );
+															$product_category = get_field( 'product_category', 'options' )["category_grid_module"];
+															?>
 															<ul>
-																<?php foreach($child_menu as $child_mn) : ?>
-																<li><a class="menu-child-items-a" href="<?php echo $child_mn->url; ?>"><i class="fas fa-chevron-right"></i> <?php echo $child_mn->title;?></a></li>
-																<?php endforeach ?>
+																<?php
+																if( !empty( $product_category) && is_array( $product_category ) ) {
+																?>
+																	<?php foreach($product_category as $child_mn) : ?>
+																		<li><a class="menu-child-items-a" data-img=" <img src='<?php echo wp_get_attachment_url(  $child_mn['product_category_image'], 'thumbnail' ) ; ?>'>" href="<?php echo get_term_link( $child_mn['product_category_info'] ); ?>"><i class="fas fa-chevron-right"></i> <?php echo get_term( $child_mn['product_category_info'] )->name;?></a></li>
+																	<?php endforeach ?>
+																<?php
+																}
+																?>
 															</ul>
 														</div>
-														<div class="menu-child-img">
-															<img src="<?php echo get_template_directory_uri()?>./img/product/product-category.jpg" alt="">
+														<div class="menu-child-img-outer">
+															<div class="menu-child-img">
+																<img src="<?php echo get_template_directory_uri()?>./img/all-category/avc-1.png" alt="">
+															</div>
 														</div>
 													</div>
 												</li>

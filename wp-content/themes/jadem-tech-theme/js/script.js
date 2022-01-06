@@ -19,8 +19,11 @@ $(document).ready(function(){
 $(document).ready(function(){
     $('.single-product-slider').slick({
         // dots: true,
+        fade: true,
+        speed: 1000,
+        cssEase: 'linear',
         arrows: true,
-        // asNavFor: '.single-product-slider-bot'
+        asNavFor: '.single-product-slider-bot'
     })
 })
 $(document).ready(function(){
@@ -31,7 +34,7 @@ $(document).ready(function(){
         // dots: true,
         // centerMode: true,
         focusOnSelect: true,
-        // asNavFor: '.single-product-slider',
+        asNavFor: '.single-product-slider',
       });
 })
 
@@ -41,6 +44,8 @@ $(document).ready(function(){
         // dots: true,
         arrows: true,
         slidesToShow: 4,
+        autoplay: true,
+        autoplaySpeed: 2000,
     })
 })
 // Tab Category Product
@@ -60,10 +65,36 @@ $(document).ready(function(){
 $(document).ready(function(){
     $(window).scroll(function(){
         var sticky = $('.header-bot'),
+            sticky_bread = $('.bread-crumb')
             scroll = $(window).scrollTop();
       
-        if (scroll >= 50) sticky.addClass('fixed');
-        else sticky.removeClass('fixed');
+        if (scroll >= 50) {
+            sticky.addClass('fixed')
+            sticky_bread.addClass('fixed_b')
+        }
+        else { 
+            sticky.removeClass('fixed')
+            sticky_bread.removeClass('fixed_b')
+        }
+        // if (scroll >= 50) sticky_bread.addClass('fixed');
+        // else sticky_bread.removeClass('fixed');
       });
 })
-    
+// Show sub menu image
+$(document).ready(function(){
+    var des = $('.menu-child-img')
+    $('.menu-child-items-a').mouseover(function(e){
+        des.html($(this).data('img'))
+    })
+}) 
+// sale card icon 
+$(document).ready(function(){
+    $('i.sale-person').click(function(){
+        var sibling_parent = $(this).parent().siblings()
+        // console.log(sibling_parent)
+        sibling_parent.toggle('hide')
+        $(this).siblings().toggle('show')
+    })
+})
+
+

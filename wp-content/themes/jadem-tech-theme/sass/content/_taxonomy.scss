@@ -10,6 +10,7 @@
         color: $white-color;
         text-transform: uppercase;
     }
+    @include transit( all, 2s);
 }
 .bread-crumb {
     li {

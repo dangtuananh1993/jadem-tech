@@ -1,7 +1,7 @@
 .banner {
     .slick-prev {
         left: 50px;
-        z-index: 10; 
+        z-index: 2; 
         width: 50px;
         height: 50px;
         &:hover {
@@ -25,7 +25,7 @@
     }
     .slick-next {
         right: 50px;
-        z-index: 10;
+        z-index: 2;
         width: 50px;
         height: 50px;
         &:hover {
@@ -85,9 +85,9 @@
         }
     }
     .slick-prev {
-        left: 10px;
-        z-index: 10; 
-        width: 50px;
+        left: 0px;
+        z-index:2; 
+        width: auto;
         height: 50px;
         &:hover {
             &::before {
@@ -101,17 +101,17 @@
             color: $header-top-text-color;
             font-size: 30px;
             opacity: 1;
-            padding: 10px;
-            border-radius: 10px;
+            padding: 5px;
+            // border-radius: 10px;
             &:hover {
                 color: $main-color;
             }
         }
     }
     .slick-next {
-        right: 10px;
-        z-index: 10;
-        width: 50px;
+        right: 0px;
+        z-index: 2;
+        width: auto;
         height: 50px;
         &:hover {
             &::before {
@@ -125,13 +125,14 @@
             color: $header-top-text-color;
             font-size: 30px;
             opacity: 1;
+            padding: 5px;
         }
     }
 }
 .relevant-product-slider {
     .slick-prev {
         left: 10px;
-        z-index: 10; 
+        z-index: 2; 
         width: 50px;
         height: 50px;
         &:hover {
@@ -155,7 +156,7 @@
     }
     .slick-next {
         right: 10px;
-        z-index: 10;
+        z-index: 2;
         width: 50px;
         height: 50px;
         &:hover {

@@ -1,7 +1,7 @@
 <!-- Category -->
 <div class="all-category">
     <div class="container">
-        <h2>DANH MỤC NỔI BẬT</h2>
+        <h2>SẢN PHẨM</h2>
         <!-- row 1 -->
         <div class="row row-1">
 

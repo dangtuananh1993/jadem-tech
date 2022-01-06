@@ -1,6 +1,6 @@
 .footer {
     &-top {
-        padding: 60px 0;
+        padding: 60px 0 30px 0;
         background-color: $header-top-background;
         &-logo-name {
             height: 100px;
@@ -32,11 +32,15 @@
                 }
             }
             .col-1 {
-                @include col(35%);
+                @include col(25%);
                 ul {
-                    li {
+                    li.info-item {
                         display: flex;
                         align-items: baseline;
+                        a {
+                        display: flex;
+                        align-items: baseline;
+                        }
                         margin-bottom: 10px;
                         &:hover {
                             i {
@@ -47,12 +51,35 @@
                             margin-right: 15px;
                         }
                     }
+                    li.info-item-x {
+                        margin-top: 15px;
+                        a {
+                            &:hover {
+                                color: $main-color;
+                                i {
+                                    color: $main-color;
+                                    border-color: $main-color;
+                                }
+                                
+                            }
+                        }
+                        i {
+                        margin-right: 15px;
+                        border: 1px solid $main-color;
+                        padding: 5px;
+                        color: $main-color;
+                        }
+                    }
                 }
             }
             .col-2 {
-                @include col(25%);
+                @include col(35%);
                 ul {
+                    display: flex;
+                    flex-wrap: wrap;
+                    justify-content: space-between;
                     li {
+                        width: 48%;
                         align-items: baseline;
                         margin-bottom: 10px;
                         &:hover {
