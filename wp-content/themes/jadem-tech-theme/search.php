@@ -17,8 +17,24 @@ get_header();
 			<header class="page-header">
 				<h1 class="page-title">
 					<?php
-					/* translators: %s: search query. */
-					printf( esc_html__( 'Search Results for: %s', 'jadem-tech' ), '<span>' . get_search_query() . '</span>' );
+					global $wp;
+					$current_url = home_url(add_query_arg(array(),$wp->request));
+					// echo "<pre>";
+					// echo $current_url;
+					// echo "<br>";
+					// echo substr($current_url, -2, 2);
+					// echo "<br>";
+					// // echo get_home_url();
+					// echo "<br>";
+					// echo $_GET['s'];
+					// echo "</pre>";
+					$lang_sub = substr($current_url, -2, 2);
+					if( $lang_sub == 'en' ) {
+						echo "EL Result for " . $_GET['s'];
+					} else {
+						echo "VN Result for " . $_GET['s'];
+					}
+					echo "<br>";
 					?>
 				</h1>
 			</header><!-- .page-header -->
