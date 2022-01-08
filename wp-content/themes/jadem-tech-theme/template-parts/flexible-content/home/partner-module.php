@@ -1,6 +1,14 @@
 <!-- Partner -->
-<div class="partner" style="background-image: linear-gradient(rgba(0, 0, 0, 0.3),rgba(0, 0, 0, 0.3)), url('<?php echo get_template_directory_uri()?>./img/partner-logo/partner-bg-modified.jpg');">
-    <h2>ĐỐI TÁC</h2>
+<?php
+    if( !isset( $home_partner_module_bg ) ) {
+        $home_partner_module_bg = get_sub_field('back_ground');
+    }
+    if( !isset( $home_partner_module_title ) ) {
+        $home_partner_module_title = get_sub_field('title');
+    }
+?>
+<div class="partner" style="background-image: linear-gradient(rgba(240, 240, 240, 0.1),rgba(240, 240, 240, 0.1)), url('<?php echo $home_partner_module_bg?>;">
+    <h2><?php echo $home_partner_module_title?></h2>
     <div class="container">
         <div class="partner-slider">
 

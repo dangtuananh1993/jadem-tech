@@ -115,9 +115,23 @@
 									
 								</ul>
 							</div>
-							<div class="header-bot-search">
-								<i class="fas fa-search"></i>
-							</div>
+							<form id="search" action="<?php echo home_url( '/' ); ?>" method="get" role="form">
+								<div class="header-bot-search-outer">
+									<div class="header-bot-search-bar">
+										<div class="header-bot-search-bar-outer">
+											<input type="text" name="s">
+											<input type="hidden" name="post_type" value="product" />
+											<!-- <?php //$query_types = get_query_var('post_type'); ?> -->
+											<!-- <input type="hidden" name="post_type" value="product" /> -->
+											<!-- <input type="submit" id="searchsubmit" value="Search" /> -->
+											<button type="submit" id="searchsubmit" value="Search"><i class="fas fa-search"></i></button>
+										</div>
+									</div>
+									<div class="header-bot-search">
+										<i class="fas fa-search"></i>
+									</div>
+								</div>
+							</form>
 						</div>
 					</div>
 				</div>

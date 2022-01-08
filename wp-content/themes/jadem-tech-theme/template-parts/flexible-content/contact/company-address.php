@@ -1,6 +1,7 @@
 <!-- Address -->
 <div class="address">
     <div class="container">
+        <p class="p-title" >QUÝ KHÁCH VUI LÒNG ĐỂ LẠI THÔNG TIN LIÊN HỆ</p>
         <div class="row">
             <div class="address-col">
                 <div class="address-outer">
@@ -20,7 +21,7 @@
             </div>
             
             <div class="address-col">
-            <?php
+                <?php
                 if( !isset($contact_form_x) ) {
                     $contact_form_x = get_sub_field('contact_form');
                 }

@@ -96,5 +96,13 @@ $(document).ready(function(){
         $(this).siblings().toggle('show')
     })
 })
+// Search Bar
+$(document).ready(function() {
+    $('.header-bot-search').click(function() {
+        // console.log( 'hello' )
+        $(this).siblings().toggle('show')
+        $(this).toggle('hide')
+    })
+})
 
 
