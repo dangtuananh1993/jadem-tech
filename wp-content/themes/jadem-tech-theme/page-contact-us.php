@@ -5,7 +5,8 @@
  * @package jadem-tech
  */
 
-get_header();
+// get_header();
+get_template_part('template-parts/header-en');
 ?>
 
 	<main id="primary" class="site-main">
@@ -54,7 +55,7 @@ get_header();
                 
             // Case: Company address
             elseif( get_row_layout() == 'company_address_module' ): 
-                get_template_part('template-parts/flexible-content/contact/company-address');
+                get_template_part('template-parts/flexible-content/contact/company-address-en');
 
             endif;
 
@@ -74,4 +75,5 @@ get_header();
 
 <?php
 // get_sidebar();
-get_footer();
+// get_footer();
+get_template_part('template-parts/footer-en');

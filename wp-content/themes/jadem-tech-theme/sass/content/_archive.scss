@@ -3,7 +3,8 @@
         margin-top: 50px;
         margin-bottom: 30px;
         .tab-name {
-            border-bottom: 3px solid $main-color;
+            display: flex;
+            flex-wrap: wrap;
             .tab-content {
                 padding: 15px ;
                 display: inline-block;
@@ -12,6 +13,9 @@
                 color: $category-text-color;
                 font-weight: 700;
                 position: relative;
+                background-color: $category-background-color;
+                margin-right: 5px;
+                margin-bottom: 5px;
                 @include transit(all, 1s);
                 &:hover {
                     cursor: pointer;

@@ -11,40 +11,58 @@ get_header();
 ?>
 
 	<main id="primary" class="site-main">
-	<!-- Banner -->
-	<div class="banner-news" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5)), url('<?php echo get_template_directory_uri() ?>./img/banner/tinTucBanner.png');">
-		<p>TIN TỨC - SỰ KIỆN</p>
-	</div>
-	<!-- End Banner -->
-	<!-- Bread Crumb -->
-	<div class="bread-crumb">
-		<?php $categories = get_the_category(); ?>
-			<ul class="bread-crumb-inner container">
-				<li>
-					<a href="<?php echo get_home_url(); ?>">HOME</a>
-					<p>/</p>
-				</li>
-				<?php foreach($categories as $cat) { ?>
-				<li>
-					<a href="<?php echo get_category_link($cat->term_id); ?>"><?php echo $cat->name; ?></a>
-				</li>
-				<?php 
-				} 
-				?>
-				<li>
-					<p>/</p>
-					<P><?php echo get_the_title() ?></P>
-				</li>
-			</ul>
-	</div>
-	<!-- End Bread Crumb -->
+	<?php
+	while ( have_posts() ) : the_post();
+	if( !isset( $home_single_url ) ) {
+		$home_single_url = get_home_url();
+	}
+	if( !isset( $EL_single ) ) {
+		$EL_single = (string) substr( $home_single_url, -3, 3 );
+	}
+	?>
+		<!-- Banner -->
+		<div class="banner-news" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5)), url('<?php echo get_template_directory_uri() ?>./img/banner/tinTucBanner.png');">
+			<?php
+			if( $EL_single == "/en" ) {
+			?> 
+				<p>NEWS - EVENTS</p>
+			<?php
+			} else {
+			?>  
+				<p>TIN TỨC - SỰ KIỆN</p>
+			<?php  
+			}
+			?>
+			
+		</div>
+		<!-- End Banner -->
+		<!-- Bread Crumb -->
+		<div class="bread-crumb">
+			<?php $categories = get_the_category(); ?>
+				<ul class="bread-crumb-inner container">
+					<li>
+						<a href="<?php echo get_home_url(); ?>">HOME</a>
+						<p>/</p>
+					</li>
+					<?php foreach($categories as $cat) { ?>
+					<li>
+						<a href="<?php echo get_category_link($cat->term_id); ?>"><?php echo $cat->name; ?></a>
+					</li>
+					<?php 
+					} 
+					?>
+					<li>
+						<p>/</p>
+						<P><?php echo get_the_title() ?></P>
+					</li>
+				</ul>
+		</div>
+		<!-- End Bread Crumb -->
 		<!-- Post content -->
 		<div class="post-content-outer">
 			<!-- Container -->
 			<div class="container">
-				<?php
-				while ( have_posts() ) : the_post();
-				?>
+				
 					<!-- Row -->
 					<div class="row">
 						<!-- Post content col -->
@@ -56,7 +74,18 @@ get_header();
 						<!-- End post content col -->
 						<!-- related post -->
 						<div class="related-post related-post-col">
-							<p class="related-title">BÀI BIẾT LIÊN QUAN</p>
+							<?php
+							if( $EL_single == "/en" ) {
+							?>   
+							<p class="related-title"><?php echo esc_html__( 'RELATED POSTS', 'jadem-tech' ) ?></p>
+							<?php
+							} else {
+							?>
+							<p class="related-title"><?php echo esc_html__( 'BÀI VIẾT LIÊN QUAN', 'jadem-tech' ) ?></p>
+							<?php  
+							}
+							?>
+							
 							<?php
 							$categories = wp_get_post_categories( get_the_ID() );
 							$cat_args = array(
@@ -89,14 +118,14 @@ get_header();
 						<!-- End related post -->
 					</div>
 					<!-- End Row -->
-				<?php
-				endwhile; // End of the loop.
-				?>
+				
 			</div>
 			<!-- End container -->
 		</div>
 		<!-- End Post content -->
-
+	<?php
+	endwhile; // End of the loop.
+	?>
 	</main><!-- #main -->
 
 <?php

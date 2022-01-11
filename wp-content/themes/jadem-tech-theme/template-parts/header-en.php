@@ -32,11 +32,18 @@
 				<div class="header-top">
 					<div class="container">
 						<div class="header-top-inner">
-							<p>Well come to Jadem-tech</p>
+							<p><?php esc_html_e( 'Well come to Jadem-tech' ); ?></p>
 							<div class="header-top-social">
-								<a href="#"><i class="fab fa-facebook-square"></i></a>
+								<?php pll_the_languages( array(
+										'show_flags' => 1,
+										'dropdown' => 0,
+										'show_names' => 0,
+										// 'hide_current' => 1,
+									));
+								?>
+								<!-- <a href="#"><i class="fab fa-facebook-square"></i></a>
 								<a href="#"><i class="fab fa-youtube"></i></a>
-								<a href="#"><i class="fab fa-linkedin-in"></i></a>
+								<a href="#"><i class="fab fa-linkedin-in"></i></a> -->
 							</div>
 						</div>
 					</div>
@@ -83,17 +90,21 @@
 													<a class="menu-item-a" href="<?php echo $menu_item->url; ?>"><?php echo $menu_item->title; ?></a>
 													<div class="menu-child">
 														<div class="menu-child-items">
-															<h3>CATEGORIES</h3>
+															<h3><?php esc_html_e( 'CATEGORIES' ); ?></h3>
 															<?php
-															$lg = get_field( 'logo' );
-															$product_category = get_field( 'product_category', 'options' )["category_grid_module"];
+															if( !isset( $lg ) ) {
+																$lg = get_field( 'logo' );
+															}
+															if( !isset( $product_category_en ) ) {
+																$product_category_en = get_field( 'product_category_el', 'options' );
+															}
 															?>
 															<ul>
 																<?php
-																if( !empty( $product_category) && is_array( $product_category ) ) {
+																if( !empty( $product_category_en) && is_array( $product_category_en ) ) {
 																?>
-																	<?php foreach($product_category as $child_mn) : ?>
-																		<li><a class="menu-child-items-a" data-img=" <img src='<?php echo wp_get_attachment_url(  $child_mn['product_category_image'], 'thumbnail' ) ; ?>'>" href="<?php echo get_term_link( $child_mn['product_category_info'] ); ?>"><i class="fas fa-chevron-right"></i> <?php echo get_term( $child_mn['product_category_info'] )->name;?></a></li>
+																	<?php foreach($product_category_en as $child_mn) : ?>
+																		<li><a class="menu-child-items-a" data-img=" <img src='<?php echo  $child_mn['product_category_image_el'] ; ?>'>" href="<?php echo get_term_link( $child_mn['product_category_el'][0] ); ?>"><i class="fas fa-chevron-right"></i> <?php echo get_term( $child_mn['product_category_el'][0] )->name;?></a></li>
 																	<?php endforeach ?>
 																<?php
 																}
@@ -120,9 +131,6 @@
 										<div class="header-bot-search-bar-outer">
 											<input type="text" name="s">
 											<input type="hidden" name="post_type" value="product" />
-											<!-- <?php //$query_types = get_query_var('post_type'); ?> -->
-											<!-- <input type="hidden" name="post_type" value="product" /> -->
-											<!-- <input type="submit" id="searchsubmit" value="Search" /> -->
 											<button type="submit" id="searchsubmit" value="Search"><i class="fas fa-search"></i></button>
 										</div>
 									</div>

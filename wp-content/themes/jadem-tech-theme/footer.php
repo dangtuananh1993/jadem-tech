@@ -17,18 +17,44 @@
 				<!-- Footer top -->
 				<div class="footer-top">
 					<div class="container">
+						<?php 
+						if( !isset( $footer_home_url ) ) {
+							$footer_home_url = get_home_url();
+						}
+						$EL_footer = (string) substr( $footer_home_url, -3, 3 );
+						?>
 						<div class="footer-top-logo-name">
 							<div class="logo">
 								<img class="img-logo" src="<?php echo get_template_directory_uri()?>/img/logo.png" alt="">
 							</div>
 							<div class="company-name">
-								<a href=""><p>CÔNG TY TNHH JADE M-TECH</p></a>
+								<?php
+								if( $EL_footer == "/en" ) {
+								?>
+									<a href=""><p><?php esc_html_e( 'JADE M-TECH CO., LTD' ); ?></p></a>
+								<?php
+								} else {
+								?>
+									<a href=""><p><?php esc_html_e( 'CÔNG TY TNHH JADE M-TECH' ); ?></p></a>
+								<?php
+								}
+								?>
 							</div>
 						</div>
 						<div class="footer-top-inner">
 							<div class="row">
 								<div class="col-1 col">
-									<p class="title">VỀ JADEM-TECH</p>
+									<?php
+									if( $EL_footer == "/en" ) {
+									?>
+										<p class="title"><?php esc_html_e( 'ABOUT JADE M-TECH' ); ?></p>
+									<?php
+									} else {
+									?>
+										<p class="title"><?php esc_html_e( 'VỀ JADE M-TECH' ); ?></p>
+									<?php
+									}
+									?>
 									<ul class="info">
 										<li class="info-item">
 											<i class="fas fa-envelope"></i>
@@ -41,13 +67,33 @@
 										<li class="info-item">
 											<a href="https://www.google.com/maps?ll=21.086154,105.753636&z=16&t=m&hl=vi&gl=US&mapclient=embed&cid=13822509147251951438">
 												<i class="fas fa-map-marker-alt"></i>
-												<p>Trụ sở Hà Nội: LÔ TT3-9,KHU ĐẤT KẸT THÔN YÊN NỘI, PHƯỜNG LIÊN MẠC , QUẬN BẮC TỪ LIÊM , THÀNH PHỐ HÀ NỘI ( GẦN NHÀ VĂN HÓA THÔN YÊN NỘI ).</p>
+												<?php
+												if( $EL_footer == "/en" ) {
+												?>
+													<p>HA NOI HEAD OFFICE: LOT TT3-9, YEN NOI, LIEN MAC WARD, NORTH TU LIEM DISTRICT, HA NOI CITY (NEAR YEN NOI CULTURE).</p>
+												<?php
+												} else {
+												?>
+													<p>TRỤ SỞ HÀ NỘI: LÔ TT3-9,KHU ĐẤT KẸT THÔN YÊN NỘI, PHƯỜNG LIÊN MẠC , QUẬN BẮC TỪ LIÊM , THÀNH PHỐ HÀ NỘI ( GẦN NHÀ VĂN HÓA THÔN YÊN NỘI ).</p>
+												<?php
+												}
+												?>
 											</a>
 										</li>
 										<li class="info-item">
 											<a href="https://www.google.com/maps/place/163,+50+An+D.+V%C6%B0%C6%A1ng,+An+L%E1%BA%A1c,+Qu%E1%BA%ADn+8,+Th%C3%A0nh+ph%E1%BB%91+H%E1%BB%93+Ch%C3%AD+Minh,+Vi%E1%BB%87t+Nam/@10.7176565,106.6184916,19z/data=!4m5!3m4!1s0x31752de5372a9ad1:0x4a8729d330dbd9c8!8m2!3d10.7177562!4d106.6191616?hl=vi">
 												<i class="fas fa-map-marker-alt"></i>
-												<p>VP HCM: 163/50 AN DƯƠNG VƯƠNG, P. AN LẠC, Q. BÌNH TÂN. TP. HỒ CHÍ MINH</p>
+												<?php
+												if( $EL_footer == "/en" ) {
+												?>
+													<p>HCM OFFICE: 163/50 AN DUONG VUONG, AN LAC WARD, BINH TAN DISTRICT, HO CHI MINH CITY</p>
+												<?php
+												} else {
+												?>
+													<p>VP HCM: 163/50 AN DƯƠNG VƯƠNG, P. AN LẠC, Q. BÌNH TÂN. TP. HỒ CHÍ MINH</p>
+												<?php
+												}
+												?>
 											</a>
 										</li>
 										<li class="info-item-x">
@@ -58,20 +104,54 @@
 									</ul>
 								</div>
 								<div class="col-2 col">
-									<div class="title">DANH MỤC</div>
+									<?php
+									if( $EL_footer == "/en" ) {
+									?>
+										<div class="title"><?php esc_html_e( 'CATEGORIES' ) ?></div>
+									<?php
+									} else {
+									?>
+										<div class="title"><?php esc_html_e( 'DANH MỤC' ) ?></div>
+									<?php
+									}
+									?>
 									<ul class="main-menu">
-										<?php  
-										if( !isset( $product_category_bot ) ) {
-											$product_category_bot = get_field('menu', 'options')['category_grid_module'];
-										}
-										if( !empty( $product_category_bot) && is_array( $product_category_bot ) ) {
-											foreach( $product_category_bot as $pc ) {
-											?>
-											<li class="menu-item"><a href="<?php echo get_term_link( $pc['product_category_info'] ); ?>"> <?php echo get_term( $pc['product_category_info'] )->name; ?> </a></li>
 										<?php
-											} //End foreach
-										} //End if
+										if( $EL_footer == "/en" ) {
 										?>
+											<?php  
+											if( !isset( $product_category_bot_en ) ) {
+												$product_category_bot_en = get_field( 'product_category_el', 'options' );
+											}
+											
+											if( !empty( $product_category_bot_en) && is_array( $product_category_bot_en ) ) {
+												foreach( $product_category_bot_en as $pc ) {
+												?>
+													<li class="menu-item"><a href="<?php echo get_term_link( $pc['product_category_el'][0] ); ?>"> <?php echo get_term( $pc['product_category_el'][0] )->name; ?> </a></li>
+												<?php
+												} //End foreach
+											} //End if
+											?>
+										<?php
+										} else {
+										?>	
+											<?php  
+											if( !isset( $product_category_bot ) ) {
+												$product_category_bot = get_field( 'product_category', 'options' )["category_grid_module"];
+											}
+											
+											if( !empty( $product_category_bot) && is_array( $product_category_bot ) ) {
+												foreach( $product_category_bot as $pc ) {
+												?>
+													<li class="menu-item"><a href="<?php echo get_term_link( $pc['product_category_info'] ); ?>"> <?php echo get_term( $pc['product_category_info'] )->name; ?> </a></li>
+												<?php
+												} //End foreach
+											} //End if
+											?>
+										<?php
+										}
+										?>
+										
 									</ul>
 								</div>
 								<div class="col-3">

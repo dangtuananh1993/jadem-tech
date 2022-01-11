@@ -114,6 +114,10 @@ p {
 .header-top-inner .header-top-social {
   font-size: 16px;
 }
+.header-top-inner .header-top-social li.lang-item {
+  display: inline-block;
+  margin-left: 15px;
+}
 .header-top-inner .header-top-social a {
   color: #b1b1b1;
 }
@@ -190,13 +194,15 @@ p {
   box-sizing: border-box;
 }
 .header-bot-inner .nav-bar .main-menu .menu-item .menu-child-items {
-  width: 60%;
+  width: 70%;
 }
 .header-bot-inner .nav-bar .main-menu .menu-item .menu-child-items ul {
   display: flex;
   flex-wrap: wrap;
 }
 .header-bot-inner .nav-bar .main-menu .menu-item .menu-child-items ul li {
+  box-sizing: border-box;
+  padding-right: 15px;
   width: 50%;
   margin-bottom: 8px;
 }
@@ -554,6 +560,7 @@ p {
   color: #0000FF;
   margin-bottom: 20px;
   margin-top: 50px;
+  text-transform: uppercase;
 }
 .about-us .left-col p {
   margin-bottom: 50px;
@@ -565,6 +572,7 @@ p {
   font-size: 30px;
   text-align: center;
   color: #0000FF;
+  text-transform: uppercase;
 }
 .all-category .row-1 .category-col {
   width: 33.33%;
@@ -574,12 +582,13 @@ p {
 }
 .all-category .row-1 .category-bg {
   background-color: #F0F0F0;
-  padding: 50px 0 30px 0;
   transition: all, 0.5s;
   -webkit-transition: all, 0.5s;
   -moz-transition: all, 0.5s;
   -ms-transition: all, 0.5s;
   -o-transition: all, 0.5s;
+  height: 100%;
+  box-sizing: unset;
 }
 .all-category .row-1 .category-bg:hover {
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
@@ -599,7 +608,7 @@ p {
   -o-transition: all, 0.5s;
 }
 .all-category .row-1 .category-1 .img-frame-outer {
-  padding: 0 50px;
+  padding: 30px 30px 20px 30px;
 }
 .all-category .row-1 .category-1 .img-frame-outer .img-frame {
   position: relative;
@@ -615,13 +624,14 @@ p {
   object-fit: cover;
 }
 .all-category .row-1 .category-1 h3 {
-  padding: 20px 20px;
+  padding: 20px 20px 40px 20px;
   text-align: center;
   text-transform: uppercase;
-  font-size: 18px;
-  line-height: 25px;
+  font-size: 16px;
+  line-height: 1.5;
   color: #333333;
   font-weight: 700;
+  margin: 0;
 }
 .all-category .row-2 .category-col {
   width: 50%;
@@ -639,6 +649,7 @@ p {
   font-size: 30px;
   text-align: center;
   color: #0000FF;
+  text-transform: uppercase;
 }
 .news .news-col {
   width: 33.33%;
@@ -721,10 +732,9 @@ p {
   height: 100px;
 }
 .footer-top-logo-name .company-name a {
+  text-transform: uppercase;
   font-size: 25px;
   font-weight: 700;
-}
-.footer-top-logo-name .company-name a:hover {
   color: #0000FF;
 }
 .footer-top-inner .col .title {
@@ -1219,7 +1229,8 @@ p {
   margin-bottom: 30px;
 }
 .category-news .category-tab .tab-name {
-  border-bottom: 3px solid #0000FF;
+  display: flex;
+  flex-wrap: wrap;
 }
 .category-news .category-tab .tab-name .tab-content {
   padding: 15px;
@@ -1229,6 +1240,9 @@ p {
   color: #333333;
   font-weight: 700;
   position: relative;
+  background-color: #F0F0F0;
+  margin-right: 5px;
+  margin-bottom: 5px;
   transition: all, 1s;
   -webkit-transition: all, 1s;
   -moz-transition: all, 1s;
@@ -1577,12 +1591,15 @@ p {
 }
 .category-product .category-tab {
   margin-top: 50px;
-  margin-bottom: 30px;
+  margin-bottom: 25px;
 }
 .category-product .category-tab .tab-name {
-  border-bottom: 3px solid #0000FF;
+  display: flex;
+  flex-wrap: wrap;
 }
 .category-product .category-tab .tab-name .tab-content {
+  margin-right: 5px;
+  margin-bottom: 5px;
   padding: 15px;
   display: inline-block;
   text-transform: uppercase;

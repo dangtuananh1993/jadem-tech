@@ -12,6 +12,12 @@ get_header();
         <!-- Main Content -->
         <?php
         while ( have_posts() ) : the_post();
+            if( !isset( $home_single_url ) ) {
+                $home_single_url = get_home_url();
+            }
+            if( !isset( $EL_single ) ) {
+                $EL_single = (string) substr( $home_single_url, -3, 3 );
+            }
         ?>
         <!-- Banner -->
         <!-- End Banner -->
@@ -121,14 +127,25 @@ get_header();
                     <div class="single-product-col single-product-inner-col-2">
                         <div class="single-product-content"> <!-- single product-content -->
                             <h1><?php echo get_the_title() ?></h1>
-                            <h2><span>Mã Sản Phẩm:</span> <?php echo get_field('product_code'); ?></h2>
                             <?php
                             if(!isset($terms)) {
                                 $terms = wp_get_post_terms( get_the_ID(), 'product_brand' );
                             }
+                            if( $EL_single == "/en" ) {
+                            ?>  
+                                <h2><span>Product Code:</span> <?php echo get_field('product_code'); ?></h2>
+                                <h3><span>Brand:</span> <?php  if( !empty($terms ) && is_array( $terms ) ){foreach( $terms as $t) { echo $t->name . ' ';};}; ?></h3> 
+                                <h3><span>Price:</span> Contact</h3>
+                            <?php
+                            } else {
+                            ?> 
+                                <h2><span>Mã Sản Phẩm:</span> <?php echo get_field('product_code'); ?></h2>
+                                <h3><span>Thương Hiệu:</span> <?php  if( !empty($terms ) && is_array( $terms ) ){foreach( $terms as $t) { echo $t->name . ' ';};}; ?></h3>
+                                <h3><span>Giá:</span> Liên hệ</h3>
+                            <?php  
+                            }
                             ?>
-                            <h3><span>Thương Hiệu:</span> <?php  if( !empty($terms ) && is_array( $terms ) ){foreach( $terms as $t) { echo $t->name . ' ';};}; ?></h3>
-                            <h3><span>Giá:</span> Liên hệ</h3>
+                            
                             <?php
                             if(!isset($args)) {
                                 $args = array(
@@ -176,7 +193,18 @@ get_header();
             </div>
             <div class="product-description container">
                 <div class="product-description-inner">
-                    <h2>MÔ TẢ SẢN PHẨM</h2>
+                    <?php
+                    if( $EL_single == "/en" ) {
+                    ?>
+                        <h2>DESCRIPTION</h2> 
+                    <?php
+                    } else {
+                    ?>   
+                        <h2>MÔ TẢ SẢN PHẨM</h2>
+                    <?php  
+                    }
+                    ?>
+                    
                     <div class="product-description-img">
                         <?php echo get_the_content(); ?>
                     </div>
@@ -187,7 +215,19 @@ get_header();
         <!-- Relevant Product -->
         <div class="relevant-product">
             <div class="container"> <!-- Container -->
-                <h2>SẢN PHẨM LIÊN QUAN</h2>
+            <?php
+                if( $EL_single == "/en" ) {
+                ?>  
+                    <h2>RELATED PRODUCTS</h2>  
+                <?php
+                } else {
+                ?>
+                    <h2>SẢN PHẨM LIÊN QUAN</h2>
+                <?php  
+                }
+                ?>
+
+                
                 <div class="relevant-product-slider"> <!-- relevant-product-slider -->
                 <?php
                     if(!isset($categories)){

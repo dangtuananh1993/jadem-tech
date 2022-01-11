@@ -10,6 +10,10 @@
         align-items: center;
         justify-content: space-between;
         .header-top-social {
+            li.lang-item {
+                display: inline-block;
+                margin-left: 15px;
+            }
             font-size: 16px;
             a {
                  color: $header-top-text-color;
@@ -76,11 +80,13 @@
                         @include transit( all, 0.5s ease-in-out);
                         box-sizing: border-box;
                         &-items {
-                            width: 60%;
+                            width: 70%;
                             ul {
                                 display: flex;
                                 flex-wrap: wrap;
                                 li {
+                                    box-sizing: border-box;
+                                    padding-right: 15px;
                                     width: 50%;
                                     margin-bottom: 8px;
                                     a {

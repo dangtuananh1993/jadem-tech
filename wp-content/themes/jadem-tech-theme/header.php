@@ -34,9 +34,16 @@
 						<div class="header-top-inner">
 							<p>Well come to Jadem-tech</p>
 							<div class="header-top-social">
-								<a href="#"><i class="fab fa-facebook-square"></i></a>
+								<?php pll_the_languages( array(
+										'show_flags' => 1,
+										'dropdown' => 0,
+										'show_names' => 0,
+										// 'hide_current' => 1,
+									));
+								?>
+								<!-- <a href="#"><i class="fab fa-facebook-square"></i></a>
 								<a href="#"><i class="fab fa-youtube"></i></a>
-								<a href="#"><i class="fab fa-linkedin-in"></i></a>
+								<a href="#"><i class="fab fa-linkedin-in"></i></a> -->
 							</div>
 						</div>
 					</div>
@@ -55,18 +62,20 @@
 								<img src="<?php echo $logo ?>" alt="" class="img-logo">
 							</div>
 							<?php 
-							$location = get_nav_menu_locations();
-							$menu_id = $location['main-menu'];
-							$main_menu = wp_get_nav_menu_items($menu_id);
+							if( !isset( $location ) ) {
+								$location = get_nav_menu_locations();
+							}
+							if( !isset(  $menu_id  ) && is_array( $location ) && !empty( $location ) ) {
+								$menu_id = $location['main-menu'];
+							}
+							if( !isset( $main_menu ) ) {
+								$main_menu = wp_get_nav_menu_items($menu_id);
+							}
 							?>
 							<div class="nav-bar">
 								<ul class="main-menu">
 									
 									<?php foreach($main_menu as $menu_item):?>
-										<?php echo "<pre>" ;
-										 echo "</pre>" ;
-										
-										?>
 										<?php if( !$menu_item->menu_item_parent ) {
 											$child_menu = [];
 											foreach( $main_menu as $menu ) {
@@ -74,31 +83,63 @@
 													$child_menu[] = $menu;
 												}
 											}
-
 											$has_child = !empty($child_menu) && is_array($child_menu);
 											if( !$has_child) { ?>
 												<li class="menu-item"><a class="menu-item-a" href="<?php echo $menu_item->url; ?>"><?php echo $menu_item->title; ?></a></li>
-											<?php } else { ?>
+											<?php } else { 
+												$header_home_url = get_home_url();
+												$EL_header = (string) substr( $header_home_url, -3, 3 );
+												?>
 												<li class="menu-item">
 													<a class="menu-item-a" href="<?php echo $menu_item->url; ?>"><?php echo $menu_item->title; ?></a>
 													<div class="menu-child">
 														<div class="menu-child-items">
-															<h3>DANH MỤC SẢN PHẨM </h3>
+															<?php  
+															if( $EL_header == "/en" ) {
+															?>
+																<h3><?php esc_html_e( 'CATEGORIES' ) ?></h3>
+															<?php
+															} else {
+															?>
+																<h3><?php esc_html_e( 'DANH MỤC SẢN PHẨM' ) ?></h3>
+															<?php
+															}
+															?>
 															<?php
 															$lg = get_field( 'logo' );
 															$product_category = get_field( 'product_category', 'options' )["category_grid_module"];
+															$product_category_en = get_field( 'product_category_el', 'options' );
+															if( $EL_header == "/en" ) {
 															?>
-															<ul>
-																<?php
-																if( !empty( $product_category) && is_array( $product_category ) ) {
-																?>
-																	<?php foreach($product_category as $child_mn) : ?>
-																		<li><a class="menu-child-items-a" data-img=" <img src='<?php echo wp_get_attachment_url(  $child_mn['product_category_image'], 'thumbnail' ) ; ?>'>" href="<?php echo get_term_link( $child_mn['product_category_info'] ); ?>"><i class="fas fa-chevron-right"></i> <?php echo get_term( $child_mn['product_category_info'] )->name;?></a></li>
-																	<?php endforeach ?>
-																<?php
-																}
-																?>
-															</ul>
+																<ul>
+																	<?php
+																	if( !empty( $product_category_en) && is_array( $product_category_en ) ) {
+																	?>
+																		<?php foreach($product_category_en as $child_mn) : ?>
+																			<li><a class="menu-child-items-a" data-img=" <img src='<?php echo  $child_mn['product_category_image_el'] ; ?>'>" href="<?php echo get_term_link( $child_mn['product_category_el'][0] ); ?>"><i class="fas fa-chevron-right"></i> <?php echo get_term( $child_mn['product_category_el'][0] )->name;?></a></li>
+																		<?php endforeach ?>
+																	<?php
+																	}
+																	?>
+																</ul>
+															<?php
+															} else {
+															?>
+																<ul>
+																	<?php
+																	if( !empty( $product_category) && is_array( $product_category ) ) {
+																	?>
+																		<?php foreach($product_category as $child_mn) : ?>
+																			<li><a class="menu-child-items-a" data-img=" <img src='<?php echo wp_get_attachment_url(  $child_mn['product_category_image'], 'thumbnail' ) ; ?>'>" href="<?php echo get_term_link( $child_mn['product_category_info'] ); ?>"><i class="fas fa-chevron-right"></i> <?php echo get_term( $child_mn['product_category_info'] )->name;?></a></li>
+																		<?php endforeach ?>
+																	<?php
+																	}
+																	?>
+																</ul>
+															<?php
+															}
+															?>
+															
 														</div>
 														<div class="menu-child-img-outer">
 															<div class="menu-child-img">
@@ -123,7 +164,7 @@
 											<!-- <?php //$query_types = get_query_var('post_type'); ?> -->
 											<!-- <input type="hidden" name="post_type" value="product" /> -->
 											<!-- <input type="submit" id="searchsubmit" value="Search" /> -->
-											<button type="submit" id="searchsubmit" value="Search"><i class="fas fa-search"></i></button>
+											<button type="submit" id="search-submit" value="Search"><i class="fas fa-search"></i></button>
 										</div>
 									</div>
 									<div class="header-bot-search">

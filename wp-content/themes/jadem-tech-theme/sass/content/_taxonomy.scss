@@ -58,12 +58,14 @@
         display: block;
     }
     .category-tab {
-        // display: flex;
         margin-top: 50px;
-        margin-bottom: 30px;
+        margin-bottom: 25px;
         .tab-name {
-            border-bottom: 3px solid $main-color;
+            display: flex;
+            flex-wrap: wrap;
             .tab-content {
+                margin-right: 5px;
+                margin-bottom: 5px;
                 padding: 15px ;
                 display: inline-block;
                 text-transform: uppercase;
