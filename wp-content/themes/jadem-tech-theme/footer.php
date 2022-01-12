@@ -25,7 +25,7 @@
 						?>
 						<div class="footer-top-logo-name">
 							<div class="logo">
-								<img class="img-logo" src="<?php echo get_template_directory_uri()?>/img/logo.png" alt="">
+							<a href="<?php echo get_home_url() ?>"><img class="img-logo" src="<?php echo get_template_directory_uri()?>/img/logo.png" alt=""></a>
 							</div>
 							<div class="company-name">
 								<?php
@@ -143,7 +143,7 @@
 											if( !empty( $product_category_bot) && is_array( $product_category_bot ) ) {
 												foreach( $product_category_bot as $pc ) {
 												?>
-													<li class="menu-item"><a href="<?php echo get_term_link( $pc['product_category_info'] ); ?>"> <?php echo get_term( $pc['product_category_info'] )->name; ?> </a></li>
+													<li class="menu-item"><i class="fas fa-caret-right"></i><a href="<?php echo get_term_link( $pc['product_category_info'] ); ?>"> <?php echo get_term( $pc['product_category_info'] )->name; ?> </a></li>
 												<?php
 												} //End foreach
 											} //End if
@@ -171,6 +171,11 @@
 					</div>
 				</div>
 				<!-- End footer bot -->
+				<!-- Scroll Top -->
+				<div id="scroll-top">
+					<i class="fas fa-angle-up"></i>
+				</div>
+				<!-- End Scroll Top -->
 			</div>
 			<!-- End Footer -->
 			</div><!-- .site-info -->

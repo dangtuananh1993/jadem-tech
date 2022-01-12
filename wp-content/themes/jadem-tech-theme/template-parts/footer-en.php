@@ -19,7 +19,7 @@
 					<div class="container">
 						<div class="footer-top-logo-name">
 							<div class="logo">
-								<img class="img-logo" src="<?php echo get_template_directory_uri()?>/img/logo.png" alt="">
+								<a href="<?php echo get_home_url() ?>"><img class="img-logo" src="<?php echo get_template_directory_uri()?>/img/logo.png" alt=""></a>
 							</div>
 							<div class="company-name">
 								<a href=""><p>Jade M-Tech Co., Ltd</p></a>
@@ -67,7 +67,7 @@
 										if( !empty( $product_category_bot_en) && is_array( $product_category_bot_en ) ) {
 											foreach( $product_category_bot_en as $pc ) {
 											?>
-											<li class="menu-item"><a href="<?php echo get_term_link( $pc['product_category_el'][0] ); ?>"> <?php echo get_term( $pc['product_category_el'][0] )->name; ?> </a></li>
+											<li class="menu-item"><i class="fas fa-caret-right"></i><a href="<?php echo get_term_link( $pc['product_category_el'][0] ); ?>"> <?php echo get_term( $pc['product_category_el'][0] )->name; ?> </a></li>
 										<?php
 											} //End foreach
 										} //End if
@@ -81,7 +81,7 @@
 								</div>
 							</div>
 						</div>
-					</div>
+					</div> <!-- End Container -->
 				</div>
 				<!-- End Footer top -->
 				<!-- Footer bot -->
@@ -91,6 +91,11 @@
 					</div>
 				</div>
 				<!-- End footer bot -->
+				<!-- Scroll Top -->
+				<div id="scroll-top">
+					<i class="fas fa-angle-up"></i>
+				</div>
+				<!-- End Scroll Top -->
 			</div>
 			<!-- End Footer -->
 			</div><!-- .site-info -->

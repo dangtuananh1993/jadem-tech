@@ -59,21 +59,22 @@
 									$logo = get_field( 'logo', "options" );
 								}
 								?>
-								<img src="<?php echo $logo ?>" alt="" class="img-logo">
+								<a href="<?php echo get_home_url() ?>"><img src="<?php echo $logo ?>" alt="" class="img-logo"></a>
 							</div>
 							<?php 
-							$location = get_nav_menu_locations();
-							$menu_id = $location['main-menu'];
-							$main_menu = wp_get_nav_menu_items($menu_id);
+							if( !isset( $location ) ) {
+								$location = get_nav_menu_locations();
+							}
+							if( !isset(  $menu_id  ) && is_array( $location ) && !empty( $location ) ) {
+								$menu_id = $location['main-menu'];
+							}
+							if( !isset( $main_menu ) ) {
+								$main_menu = wp_get_nav_menu_items($menu_id);
+							}
 							?>
 							<div class="nav-bar">
 								<ul class="main-menu">
-									
 									<?php foreach($main_menu as $menu_item):?>
-										<?php echo "<pre>" ;
-										 echo "</pre>" ;
-										
-										?>
 										<?php if( !$menu_item->menu_item_parent ) {
 											$child_menu = [];
 											foreach( $main_menu as $menu ) {
@@ -81,7 +82,6 @@
 													$child_menu[] = $menu;
 												}
 											}
-
 											$has_child = !empty($child_menu) && is_array($child_menu);
 											if( !$has_child) { ?>
 												<li class="menu-item"><a class="menu-item-a" href="<?php echo $menu_item->url; ?>"><?php echo $menu_item->title; ?></a></li>
@@ -122,27 +122,25 @@
 										} ?>
 									
 									<?php endforeach ?>
-									
 								</ul>
 							</div>
-							<form id="search" action="<?php echo home_url( '/' ); ?>" method="get" role="form">
-								<div class="header-bot-search-outer">
-									<div class="header-bot-search-bar">
-										<div class="header-bot-search-bar-outer">
+							<div class="header-bot-search-outer">
+								<div class="header-bot-search-bar">
+									<div class="header-bot-search-bar-outer">
+										<form id="search" action="<?php echo home_url( '/' ); ?>" method="get" role="form">
 											<input type="text" name="s">
 											<input type="hidden" name="post_type" value="product" />
 											<button type="submit" id="searchsubmit" value="Search"><i class="fas fa-search"></i></button>
-										</div>
-									</div>
-									<div class="header-bot-search">
-										<i class="fas fa-search"></i>
+										</form>
 									</div>
 								</div>
-							</form>
-						</div>
-					</div>
-				</div>
-				<!-- End Header bot -->
+								<div class="header-bot-search">
+									<i class="fas fa-search"></i>
+								</div>
+							</div>
+						</div> <!-- End footer bot inner -->
+					</div> <!-- End container -->
+				</div> <!-- End Header bot -->
 			</div>
 			<!-- End Header -->
 		</header><!-- #masthead -->

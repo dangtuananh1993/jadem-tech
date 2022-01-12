@@ -45,11 +45,11 @@
     .post-content {
         font-size: 14px;
         p {
-            font-size: 16px;
+            font-size: 15px;
             line-height: 26px;
         }
         a {
-            font-size: 16px;
+            font-size: 15px;
             line-height: 26px;
         }
         img {
@@ -57,11 +57,20 @@
         }
         .single-post-title {
             color: $main-color;
-            font-size: 27px;
+            font-size: 25px;
             line-height: 32px;
+            margin: 15px 0;
         }
         .wp-block-image, .wp-block-gallery {
             margin-top: 14px;
+        }
+        .post-meta-date {
+            color: $header-top-text-color;
+            font-size: 14px;
+            margin-bottom: 5px;
+            i {
+                padding-right: 8px;
+            }
         }
     }
     .post-content-col {

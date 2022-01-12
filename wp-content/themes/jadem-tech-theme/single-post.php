@@ -69,7 +69,8 @@ get_header();
 						<div class="post-content post-content-col">
 							<img src="<?php echo get_the_post_thumbnail_url() ?>" alt="">
 							<h1 class="single-post-title"><?php echo get_the_title() ?></h1>
-							<?php echo get_the_content(); ?>
+							<p class="post-meta-date"><i class="fas fa-calendar-alt"></i><?php echo get_the_date( 'j, F, Y' ); ?></p>
+							<p class="post-content"><?php echo get_the_content(); ?></p>
 						</div>
 						<!-- End post content col -->
 						<!-- related post -->

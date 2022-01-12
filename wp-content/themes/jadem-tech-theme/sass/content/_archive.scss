@@ -71,19 +71,19 @@
     .active {
         display: block;
     }
+    .news {
+        margin-bottom: 0;
+    }
     .row {
         .category-news-col-1 {
             @include col(33.33%);
         }
-        
-        
-            h3 {
-                color: $main-color!important;
-                text-transform: uppercase;
-                font-size: 18px;
-                line-height: 25px;
-                // color: $category-text-color;
-                font-weight: 700;
-            }
+        h3 {
+            color: $main-color!important;
+            text-transform: uppercase;
+            font-size: 18px;
+            line-height: 25px;
+            font-weight: 700;
+        }
     } 
 }

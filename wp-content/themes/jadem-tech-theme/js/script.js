@@ -104,5 +104,16 @@ $(document).ready(function() {
         $(this).toggle('hide')
     })
 })
+// Scroll top
+$(document).ready(function() {
+    $('#scroll-top').click(function() {
+        console.log('hello')
+        window.scrollTo({
+            top: 0,
+            left: 0,
+            behavior: "smooth",
+        })
+    })
+})
 
 

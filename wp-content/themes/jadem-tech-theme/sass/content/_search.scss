@@ -1,0 +1,21 @@
+.page-header {
+    .page-title {
+        margin: 50px 0 20px 0;
+        font-size: 20px;
+        font-weight: 600;
+        color: $header-top-text-color;
+        span {
+            color: #282828;
+        }
+    }
+}
+.result-not-found {
+    margin: 50px 0 40px 0;
+    font-size: 20px;
+    font-weight: 600;
+    color: $header-top-text-color;
+    line-height: 1.5;
+    span {
+        color: #282828;
+    }
+}
